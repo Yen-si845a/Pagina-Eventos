@@ -33,13 +33,13 @@ Asegúrate de tener Nodejs y Xampp/MySQL instalados en tu máquina.
 ```
 npm init -y
 
-npm install express mysql2 bcryptjs body-parser express-session cors
+npm install 
 ```
 
 ### 3. Ejecutar el Proyecto
 Una vez configurado, ejecute el proyecto, en el terminal escriba:
 ```
-node server.js
+npm start
 ```
 Este archivo contiene todas las conexciones y la corrida del servidor el cual se corre en el "http://localhost:3000"
 
