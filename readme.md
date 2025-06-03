@@ -31,8 +31,6 @@ Asegúrate de tener Nodejs y Xampp/MySQL instalados en tu máquina.
 - Configura la conexión a la base de datos.
 - Al tener Nodejs instalado en el terminal del proyecto haz los siquientes codigos:
 ```
-npm init -y
-
 npm install 
 ```
 
