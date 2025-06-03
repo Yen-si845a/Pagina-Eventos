@@ -5,17 +5,22 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path'); 
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+
+app.use(cors());
+
+const PORT = process.env.PORT || 3000;
 
 // Configuración de la base de datos
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', 
-    password: '', 
-    database: 'auth_system',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
+
 
 db.connect(err => {
     if (err) {
@@ -262,7 +267,6 @@ app.post('/eliminar-cuenta', (req, res) => {
     });
 });
 
-app.use(cors());
 
 // Administrador
 app.get('/Admin/administrador.html', (req, res) => {
@@ -332,20 +336,9 @@ app.post('/auth', (req, res) => {
       }
     });
   }); 
-// Importa 'open' dinámicamente
-async function startServer() {
-  const open = (await import('open')).default;
-
-  // Aquí va el resto de tu configuración y código
-
-  app.use(express.static(path.join(__dirname, 'public')));
+;
 
   app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
-    open(`http://localhost:${PORT}/html/index.html`);  // o la ruta que sea la página principal
 });
-}
-
-startServer();
-// Servidor
 
