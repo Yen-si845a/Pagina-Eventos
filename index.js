@@ -338,7 +338,20 @@ app.post('/auth', (req, res) => {
   }); 
 ;
 
+// Importa 'open' dinámicamente
+async function startServer() {
+  const open = (await import('open')).default;
+
+  // Aquí va el resto de tu configuración y código
+
+  app.use(express.static(path.join(__dirname, 'public')));
+
+
   app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+    open(`http://localhost:${PORT}/html/index.html`);  // o la ruta que sea la página principal
 
+});
+}
+
+startServer();
